@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-const API_URL = 'http://127.0.0.1:8000/generate';
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
 
 export const generateCoverLetter = async (jobDescription, cvText) => {
   const formData = new FormData();
   formData.append("job_description", jobDescription);
   formData.append("cv_text", cvText);
 
-  const response = await axios.post(API_URL, formData, {
+  const response = await axios.post(`${API_URL}/generate`, formData, {
     headers: { "Content-Type": "multipart/form-data" },
   });
 
