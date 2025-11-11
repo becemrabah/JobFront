@@ -10,7 +10,7 @@ const CoverLetterResult = ({ result, darkMode }) => {
 
   if (!result) return null;
 
-  const cleanText = (text) => text.replace(/[^\x00-\x7F]/g, "");
+  const cleanText = (text) => text.replace(/[^\p{ASCII}]/gu, "");
 
   const handleDownloadPDF = () => {
     const doc = new jsPDF();
