@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+const API_URL = process.env.REACT_APP_API_URL;
 const CoverLetterForm = ({ setResult, darkMode }) => {
   const [jobDescription, setJobDescription] = useState("");
   const [cvText, setCvText] = useState("");
@@ -13,7 +13,7 @@ const CoverLetterForm = ({ setResult, darkMode }) => {
       formData.append("job_description", jobDescription);
       formData.append("cv_text", cvText);
 
-      const response = await fetch("http://127.0.0.1:8000/generate", {
+      const response = await fetch(`${API_URL}/generate`, {
         method: "POST",
         body: formData,
       });
